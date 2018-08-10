@@ -1,0 +1,75 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base.html" %}
+{% load static staticfiles  %}
+
+<!-- Bloco que define o <title></title> da nossa página -->
+{% block title %}Registro de Imóveis de Iturama - MG {% endblock %}
+
+<form action="/funcionario/" method="post">
+<!-- Bloco de conteúdo da nossa página -->
+{% block conteudo %}
+<div class="container mt-5">
+  <div class="row">
+    
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Consultar Protocolo</h5>
+          <p class="card-text">
+            Informe o número do seu <code>PROTOCOLO: </code>.
+          </p>
+            <form action="{% url 'website:lista_funcionarios' %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="protocolo" id="protocolo"/>
+                <button type="submit" class="btn btn-primary">PESQUISAR</button>
+            </form>
+        </div>          
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Consultar Pedido de Certidão</h5>
+          <p class="card-text">
+            Informe o número do seu <code>PEDIDO DE CERTIDÃO: </code>.
+          </p>
+          <input type="number" name="edtcertidao" id="edtcertidao"/>          
+          <a href="{% url 'website:lista_funcionarioscertidao' %}"
+             class="btn btn-primary">
+             PESQUISAR
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="card-body">        
+      </div>
+    </div>    
+    
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="card-body">        
+      </div>
+    </div>    
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Consultar Exame e Calculo</h5>
+          <p class="card-text">
+            Informe o número do seu <code>EXAME: </code>.
+          </p>
+          <input type="number" name="edtexame" id="edtexame"/>          
+          <a href="{% url 'website:lista_funcionariosexame' %}"
+             class="btn btn-primary">
+            PESQUISAR
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+</form>

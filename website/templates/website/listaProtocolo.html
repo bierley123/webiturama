@@ -1,0 +1,98 @@
+{% extends "website/_layouts/base.html" %}
+
+{% block title %}Andamento do Protocolo{% endblock %}
+
+{% load primeira_letra %}
+
+{% load numero_atual %}
+
+<div id="edtprotocolo"> </div>
+
+<script> // from display.html
+document.getElementById("edtprotocolo").innerHTML = window.location.search; // you will have to parse
+                                                                     // the query string to extract the
+                                                                     // parameter you need																 
+																	 
+																	 
+</script>
+</body>
+
+
+{% block conteudo %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Andamento do Protocolo sxxxx</h5>
+             
+
+          {% if protocolos|length > 0 %}
+            <p class="card-text">
+              xxxxx Andamento atual do <code>Protocolo </code> pesquisado. 
+            </p>
+                        
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Apresentante</th>
+                <th scope="col">Protocolo</th>
+                <th scope="col">Data Entrada</th>
+                <th scope="col">Valor pagar</th>
+                <th scope="col" class="text-center"> </th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for protocolo in protocolos %}
+                <tr>
+                  <th scope="row"> </th>
+                  <td>{{ protocolo.nome }}</td>
+                  <td>{{ protocolo.sobrenome }}</td>
+                  <td>{{ protocolo.tempo_de_servico }}</td>
+                  <td>{{ protocolo.remuneracao }}</td>
+                  <td class="text-center">
+                    <!--
+                    <a href="{% url 'website:atualiza_funcionario' pk=protocolo.id %}"
+                       class="btn btn-primary">
+                      Atualizar
+                    </a>
+                    <a href="{% url 'website:deleta_funcionario' pk=protocolo.id %}"
+                      class="btn btn-danger">
+                        Excluir
+                    </a>
+                     -->
+                  </td>                  
+                </tr>      
+                <iframe src="http://127.0.0.1/pdfcartorio/{{ protocolo.remuneracao }}.pdf" width="1050" height="500">
+                </iframe>                                                          
+  
+              {% endfor %}              
+              </tbody> 
+            </table> 
+             
+            <table> 
+              <tbody> 
+              {% for protocolo in protocolos %}
+              <!--
+              <iframe src="http://127.0.0.1/pdfcartorio/{{ protocolo.remuneracao }}.pdf" width="1000" height="500">
+              </iframe>                                                          
+              {% endfor %}            
+              -->
+              </tbody>              
+            </table>            
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhum <code>Protocolo</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+          <hr />
+          <div class="text-right">                  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

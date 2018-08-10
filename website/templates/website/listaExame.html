@@ -1,0 +1,66 @@
+{% extends "website/_layouts/base.html" %}
+
+{% block title %}Andamento do Exame{% endblock %}
+
+{% load primeira_letra %}
+
+{% block conteudo %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Andamento do Exame e Cálculo</h5>
+
+          {% if Exames|length > 0 %}
+            <p class="card-text">
+              Andamento atual do <code>Exame</code> pesquisado.
+            </p>
+
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Exame Cálculo</th>
+                <th scope="col">Data Entrada</th>
+                <th scope="col">Apresentante</th> 
+
+                <!-- <th scope="col">Valor faltante</th>  -->
+                <th scope="col" class="text-center">Arquivo PDF</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for exame in Exame %}
+                <tr>
+                  <th scope="row">{{ exame.nome }}</th>
+                  <td>{{ exame.tempo_de_servico }}</td>
+                  <td>{{ exame.sobrenome }}</td>
+                  <td>{{ exame.nome }}</td>                  
+                 
+                  <!--   <td>{{ exame.remuneracao }}</td> -->
+
+                  <td class="text-center">                                        
+                    <a href="{% url 'website:atualiza_funcionario' pk=funcionario.id %}"                    
+                       class="btn btn-primary">
+                      Abrir arquivo PDFFF
+                    </a>                                        
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhum <code>Exame</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+          <hr />
+          <div class="text-right">
+            <a href="{% url 'website:index' %}" class="btn btn-danger">
+              Nova Pesquisa
+            </a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
