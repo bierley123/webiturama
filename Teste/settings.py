@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # Custom Middlewares
-    'Teste.middlewares.FiltraIPMiddleware',
+    # 'Teste.middlewares.FiltraIPMiddleware',
 ]
 
 ROOT_URLCONF = 'Teste.urls'
