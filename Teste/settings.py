@@ -25,7 +25,7 @@ SECRET_KEY = 'i02i_fzuzz5_pevd*a!sy=ea#2cvytt&jwt*6@mu$mvwhri!7$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bierley.pythonanywhere.com.br']
+ALLOWED_HOSTS = ['bierley.pythonanywhere.com']
 
 
 # Application definition
