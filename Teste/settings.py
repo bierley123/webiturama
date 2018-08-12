@@ -133,4 +133,3 @@ STATIC_URL = '/static/'
 # Configuracao FTP
 #URL_FTP = 'www.teste.com'
 URL_FTP = '127.0.0.1'
-
